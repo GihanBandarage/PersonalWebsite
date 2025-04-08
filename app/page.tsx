@@ -1,106 +1,112 @@
-"use client"
+"use client";
 
 import Image from "next/image";
-import pp from "../public/pp.png"
-import { ThemeToggle } from "@/components/theme-toggle";
-import { animate, scroll } from "motion"
-import { motion } from "motion/react"
-import { Button } from "@/components/button";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { MdMarkEmailRead, MdOutlineMail } from "react-icons/md";
+import { MdOutlineMail } from "react-icons/md";
+
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/button";
+import pp from "../public/pp.png";
 
 export default function Home() {
   return (
+    //same height
+<div className="min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-20 px-5 ">
+<main className="flex flex-col min-h-[100dvh] space-y-10">
+      <div className="mx-auto w-full max-w-2xl space-y-8"> 
+        {/* Hero Section */}
+        <section id="hero-about" className="space-y-10">
+  <div className="flex justify-between items-center gap-4">
+    {/* Hero Text */}
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="flex-1 flex-col space-y-1.5"
+    >
+      <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
+        Hi, Gihan Here
+      </h1>
+      <p className="max-w-[600px] md:text-xl">
+        20 year old something guy
+      </p>
+    </motion.div>
 
-    // Header Section
-     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
-      <div className="mx-auto max-w-xl px-4 py-20">
-        <header className="flex items-center justify-between mb-12 w-full">
-           <motion.div
-            initial={{opacity:0, x: -100}}
-            animate={{opacity: 1, x:0}}
-            transition={{duration: 0.8}} 
-            className="space-y-1"
-          >
-            <h1 className="text-6xl font-bold text-black dark:text-white  inline-block">Hi, I'm Gihan</h1>
-            <p className="  inline-block max-w-[600px] md:text-xl">20 year old something guy
-            </p>
+    {/* Profile Image */}
+    <motion.div
+      initial={{ opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="relative shrink-0 overflow-hidden rounded-full size-28 border"
+    >
+      <Image
+        src={pp}
+        alt="Gihan"
+        className="aspect-square h-full w-full"
+      />
+    </motion.div>
+  </div>
 
-   
-          </motion.div>
-          <div className="relative flex shrink-0 overflow-hidden rounded-full size-28 border">
-            <Image 
-              src={pp} 
-              alt="profile picture" 
-              className="cursor-pointer transition-all duration-300 object-cover w-full h-full"
-            />
-          </div>
-        </header>
-        <section id="about">
+  {/* About Section */}
+  <motion.div
+    initial={{ opacity: 0, y: -8 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="space-y-3"
+  >
+    <h2 className="text-xl font-bold">About</h2>
+    <div className="prose max-w-full text-sm text-muted-foreground dark:prose-invert font-sans">
+      <p>Hey there. I'm Gihan, a 20y/o CS undergrad at Victoria University of Wellington.</p>
+      <p>I'm into machine learning and building things that actually work. Outside of code, it's mostly anime, chess, and the occasional game grind. Always learning, always leveling up.</p>
+    </div>
+  </motion.div>
+</section>
 
-          <motion.div
-            initial={{opacity:0, x: -100}}
-            animate={{opacity: 1, x:0}}
-            transition={{duration: 0.8}} 
-            className="space-y-3"
-
+        {/* Buttons & Socials */}
+        <main className="space-y-6 mt-10">
+          <section>
+            <motion.div
+         initial={{ opacity: 0, y: -8 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.8 }}
+              className="flex items-center gap-3"
             >
-            <h2 className="text-xl font-bold">About</h2>
-          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            <p> tldr; anime fan, gamer, chess player.
-i like anime, space stuff, coding, gaming and whatever looks cool on a screen.
-i casually explore chess strategies and digital worlds. still figuring out what makes a dent in my universe.
-</p>
-</div>
+              <Button className="rounded-full text-white transition-transform hover:scale-105">
+                Resume
+              </Button>
 
+              <Link
+                href="#"
+                className="text-gray-600 transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+              >
+                <FaGithub className="h-6 w-6" />
+              </Link>
 
+              <Link
+                href="#"
+                className="text-gray-600 transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+              >
+                <FaLinkedin className="h-6 w-6" />
+              </Link>
 
-
-            </motion.div>
-
-          </section>
-
-          
-{/* Button Section */}
-        <main className="space-y-6">
-
-          <section className="y-10">
-          <motion.div
-            initial={{opacity:0, x: 50}}
-            animate={{opacity: 1, x:0}}
-            transition={{duration: 0.8}} 
-            
-            className="flex itens-center gap-3">
-            <Button className="rounded-full text-white transition-transform hover:scale-105">Resume</Button>
-
-
-      <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-      <FaGithub className="w-6 h-6"></FaGithub>
-      </Link>
-
-
-      <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-      <FaLinkedin className="w-6 h-6"></FaLinkedin>
-      </Link>
-
-
-      <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-      <MdOutlineMail className="w-6 h-6"></MdOutlineMail>
-      </Link>
-
-
-      
+              <Link
+                href="#"
+                className="text-gray-600 transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+              >
+                <MdOutlineMail className="h-6 w-6" />
+              </Link>
             </motion.div>
           </section>
+        </main>
 
-       
-          
-            
-         </main>
-        
-        <ThemeToggle />
+        {/* Theme Toggle */}
+        <div className="mt-10">
+          <ThemeToggle />
+        </div>
       </div>
+      </main>
     </div>
   );
 }
