@@ -10,13 +10,15 @@ import { useTheme } from "next-themes";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/button";
 import pp from "../public/pp.png";
+import vuwLogo from "../public/vuwLogo.png"; // update the path/name if needed
+
 
 export default function Home() {
   const { setTheme, theme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-20 px-5 ">
-      <main className="flex flex-col min-h-[100dvh] space-y-10">
+      <main className="flex flex-col min-h-[100dvh] space-y-2">
         <div className="mx-auto w-full max-w-2xl space-y-8"> 
           {/* Hero Section */}
           <section id="hero-about" className="space-y-10">
@@ -70,6 +72,72 @@ export default function Home() {
 
 
 </div>
+
+<section className="space-y-2 mt-10">
+  <motion.div
+    initial={{ opacity: 0, y: -6 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <h2 className="text-xl font-bold">Education</h2>
+  </motion.div>
+
+  <motion.div
+    initial={{ opacity: 0, y: -6 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <a
+      href="https://www.wgtn.ac.nz/"
+      className="block cursor-pointer"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+<div className="rounded-lg  bg-background text-foreground flex p-3 hover:shadow-lg transition">
+        {/* Left: Image */}
+        <div className="flex-none">
+          <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto bg-muted-background dark:bg-foreground">
+            <Image
+              src={vuwLogo} // import this at the top
+              alt="Victoria University of Wellington"
+              className="aspect-square h-full w-full object-contain"
+            />
+          </span>
+        </div>
+
+        {/* Right: Text + Dates */}
+        <div className="flex-grow ml-4 flex-col items-center group flex">
+          <div className="flex flex-col w-full">
+            <div className="flex items-center justify-between gap-x-2 text-base">
+              <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
+                Victoria University of Wellington
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-chevron-right size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </h3>
+              <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+                2023 – Present
+              </div>
+            </div>
+            <div className="font-sans text-xs">Computer Science</div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </motion.div>
+</section>
+
 
 
 <section className="space-y-8 mt-10">
