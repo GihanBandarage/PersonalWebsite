@@ -3,18 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { MdOutlineMail } from "react-icons/md";
+// import { FaGithub, FaLinkedin } from "react-icons/fa";
+// import { MdOutlineMail } from "react-icons/md";
 import { useTheme } from "next-themes";
 
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/button";
+// import { ThemeToggle } from "@/components/theme-toggle";
+// import { Button } from "@/components/button";
 import pp from "../public/pp.png";
 import vuwLogo from "../public/vuwLogo.png"; // update the path/name if needed
+import { useEffect, useState } from "react";
 
 
 export default function Home() {
   const { setTheme, theme } = useTheme();
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
   return (
     <div className="min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-20 px-5 ">
@@ -34,7 +40,7 @@ export default function Home() {
                   Hi, Gihan Here
                 </h1>
                 <p className="max-w-[600px] md:text-xl">
-                  20 year old something guy
+                  20 year old human
                 </p>
               </motion.div>
 
@@ -62,9 +68,10 @@ export default function Home() {
             >
               <h2 className="text-xl font-bold">About</h2>
               <div className="prose max-w-full text-sm text-muted-foreground dark:prose-invert font-sans">
-                <p>Hey there. I'm Gihan, a 20y/o CS undergrad at Victoria University of Wellington.</p>
-                <p>I'm into machine learning and building things that actually work.</p>
-                <p> Outside of code, it's anime, chess, and the occasional game grind.</p>
+               <p>Hey there. I&apos;m Gihan, a 20y/o CS undergrad at Victoria University of Wellington.</p>
+<p>I&apos;m into machine learning and building things that actually work.</p>
+<p>Outside of code, it&apos;s anime, chess, and the occasional game grind.</p>
+
                 <p>Always learning, always leveling up.</p>
               </div>
             </motion.div>
@@ -211,23 +218,37 @@ export default function Home() {
 
           <div className="h-6 w-px bg-border"></div>
 
-          <button
-  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-  className="p-2 rounded-full hover:bg-accent hover:text-accent-foreground"
->
-  {theme === "dark" ? (
-    // currently dark -> show sun (to switch to light)
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="5"></circle>
-      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-    </svg>
-  ) : (
-    // currently light -> show moon (to switch to dark)
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-    </svg>
-  )}
-</button>
+{mounted && (
+  <button
+    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+    className="p-2 rounded-full hover:bg-accent hover:text-accent-foreground"
+  >
+    {theme === "dark" ? (
+      // 🌞 Show sun icon (we're currently in dark mode, clicking switches to light)
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+    ) : (
+      // 🌙 Show moon icon (we're currently in light mode, clicking switches to dark)
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+      </svg>
+    )}
+  </button>
+)}
 
 
         </div>
