@@ -34,7 +34,7 @@ useEffect(() => {
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="flex-1 flex-col space-y-1.5"
+                className="flex-1 flex-col space-y-2.5"
               >
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
                   Hi, Gihan Here
